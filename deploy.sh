@@ -3,7 +3,7 @@
 # Deployment script for Sam Blundell's website
 # Copies built files to the VPS web directory
 
-VPS_USER="sam"  # Change this to your VPS username
+VPS_USER="jakdaw"  # Change this to your VPS username
 VPS_HOST="samblundell.co.uk"  # Your domain/IP
 WEB_ROOT="/var/www/samblundell.co.uk/html"
 
