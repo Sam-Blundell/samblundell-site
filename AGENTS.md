@@ -1,0 +1,20 @@
+# Agent Guide
+- Build: `./build.sh` compiles Tailwind `src/css/input.css` → `src/css/main.css`.
+- Deploy: `./deploy.sh` builds then rsyncs `src/` to VPS; edit user/host/path.
+- Tests: none configured. Optional checks: `htmlhint`/`stylelint`, link checker locally.
+- Lint: none configured. Suggested: `npx htmlhint "src/**/*.html"`; `npx stylelint "src/**/*.css"`.
+- HTML: semantic tags, double-quoted attributes, 4-space indent, kebab-case filenames.
+- Tailwind: prefer utilities; keep custom CSS minimal in `src/css/input.css`.
+- Classes: order utilities layout → spacing → typography → color.
+- Assets: store under `src/assets/`; reference with relative paths.
+- Accessibility: set `<html lang>`, alt text, logical headings, focus-visible.
+- JS/TS: not used. If adding, use ES modules, no globals, small files.
+- Imports: if added, prefer relative within `src/`; avoid aliased roots.
+- Naming: folders/files kebab-case; IDs and CSS custom props kebab-case.
+- Formatting: ensure trailing newline; UTF-8; keep lines <120 chars.
+- Error handling: scripts exit non-zero on failure; echo clear messages.
+- Secrets: do not commit VPS creds; prefer env vars in scripts.
+- Single test: N/A. If added, document `npm test -- my.spec -t "name"`.
+- Tooling: Tailwind CLI binary `./tailwindcss-linux-x64` required; see README to install.
+- Cursor rules: none found (`.cursor/rules/` or `.cursorrules` absent).
+- Copilot rules: none found (`.github/copilot-instructions.md` absent).
