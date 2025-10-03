@@ -2,6 +2,9 @@
 src/css/main.css
 tailwindcss-linux-x64
 
+# Local env config
+.env
+
 # OS files
 .DS_Store
 Thumbs.db
