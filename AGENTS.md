@@ -1,20 +1,19 @@
 # Agent Guide
-- Build: `./build.sh` compiles Tailwind `src/css/input.css` → `src/css/main.css`.
-- Deploy: `./deploy.sh` builds then rsyncs `src/` to VPS; edit user/host/path.
-- Tests: none configured. Optional checks: `htmlhint`/`stylelint`, link checker locally.
-- Lint: none configured. Suggested: `npx htmlhint "src/**/*.html"`; `npx stylelint "src/**/*.css"`.
-- HTML: semantic tags, double-quoted attributes, 4-space indent, kebab-case filenames.
-- Tailwind: prefer utilities; keep custom CSS minimal in `src/css/input.css`.
-- Classes: order utilities layout → spacing → typography → color.
-- Assets: store under `src/assets/`; reference with relative paths.
-- Accessibility: set `<html lang>`, alt text, logical headings, focus-visible.
-- JS/TS: not used. If adding, use ES modules, no globals, small files.
-- Imports: if added, prefer relative within `src/`; avoid aliased roots.
-- Naming: folders/files kebab-case; IDs and CSS custom props kebab-case.
-- Formatting: ensure trailing newline; UTF-8; keep lines <120 chars.
-- Error handling: scripts exit non-zero on failure; echo clear messages.
-- Secrets: do not commit VPS creds; prefer env vars in scripts.
-- Single test: N/A. If added, document `npm test -- my.spec -t "name"`.
-- Tooling: Tailwind CLI binary `./tailwindcss-linux-x64` required; see README to install.
-- Cursor rules: none found (`.cursor/rules/` or `.cursorrules` absent).
-- Copilot rules: none found (`.github/copilot-instructions.md` absent).
+**Build & Deploy**
+- `./build.sh` compiles Tailwind `src/css/input.css` → `src/css/main.css`.
+- `./deploy.sh` runs the build then `rsync`s `src/` to VPS; update user/host/path.
+- Tailwind CLI `./tailwindcss-linux-x64` must exist; install via `README.md`.
+**Lint & Test**
+- Optional linting: `npx htmlhint "src/**/*.html"` and `npx stylelint "src/**/*.css"`.
+- Tests absent; when added, run `npm test -- my.spec -t "name"` for single cases.
+**Code Style**
+- HTML: semantic structure, `<html lang>`, double-quoted attrs, 4-space indent.
+- Tailwind utilities first; keep custom CSS minimal in `src/css/input.css`, order classes layout → spacing → typography → color.
+- Assets live in `src/assets/` with relative links; files/folders, IDs, CSS custom props all kebab-case.
+- Imports: prefer relative paths within `src/`; use ES modules, no globals.
+- Formatting: UTF-8, trailing newline, <120 chars per line.
+- Error handling: scripts exit non-zero on failure and echo actionable messages.
+- Accessibility: alt text, logical headings, maintain focus-visible styles.
+- Secrets: never commit VPS credentials; rely on env vars or ignored config.
+**Rules**
+- No Cursor rules in `.cursor/...`; no Copilot rules in `.github/copilot-instructions.md`.
