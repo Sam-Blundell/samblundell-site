@@ -16,7 +16,7 @@ else
     echo "✗ Tailwind CLI not found. Install 'tailwindcss' or add $SCRIPT_DIR/tailwindcss-linux-x64"
     exit 1
 fi
-"$TAILWIND_BIN" -i "$SCRIPT_DIR/src/css/input.css" -o "$SCRIPT_DIR/src/css/main.css" --minify --content "$SCRIPT_DIR/src/**/*.html"
+"$TAILWIND_BIN" -c "$SCRIPT_DIR/tailwind.config.cjs" -i "$SCRIPT_DIR/src/css/input.css" -o "$SCRIPT_DIR/src/css/main.css" --minify
 
 # Check if build was successful
 if [ $? -eq 0 ]; then

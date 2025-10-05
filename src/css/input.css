@@ -1,5 +1,6 @@
-@import "tailwindcss";
-@source "../**/*.html";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* System UI font stack - clean, modern, 0KB download */
 body {
