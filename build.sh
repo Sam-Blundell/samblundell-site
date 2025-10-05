@@ -16,7 +16,7 @@ else
     echo "✗ Tailwind CLI not found. Download the standalone binary or install 'tailwindcss'"
     exit 1
 fi
-"$TAILWIND_BIN" -c "$SCRIPT_DIR/tailwind.config.cjs" -i "$SCRIPT_DIR/src/css/input.css" -o "$SCRIPT_DIR/src/css/main.css" --minify
+"$TAILWIND_BIN" --config "$SCRIPT_DIR/tailwind.config.cjs" -i "$SCRIPT_DIR/src/css/input.css" -o "$SCRIPT_DIR/src/css/main.css" --minify
 
 # Check if build was successful
 if [ $? -eq 0 ]; then
