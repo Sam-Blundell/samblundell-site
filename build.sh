@@ -5,15 +5,15 @@
 
 echo "Building website..."
 
-# Compile Tailwind CSS (use system tailwindcss, fallback to local binary)
+# Compile Tailwind CSS (prefer local binary, fallback to system)
 echo "Compiling Tailwind CSS..."
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-if command -v tailwindcss >/dev/null 2>&1; then
-    TAILWIND_BIN="$(command -v tailwindcss)"
-elif [ -x "$SCRIPT_DIR/tailwindcss-linux-x64" ]; then
+if [ -x "$SCRIPT_DIR/tailwindcss-linux-x64" ]; then
     TAILWIND_BIN="$SCRIPT_DIR/tailwindcss-linux-x64"
+elif command -v tailwindcss >/dev/null 2>&1; then
+    TAILWIND_BIN="$(command -v tailwindcss)"
 else
-    echo "✗ Tailwind CLI not found. Install 'tailwindcss' or add $SCRIPT_DIR/tailwindcss-linux-x64"
+    echo "✗ Tailwind CLI not found. Download the standalone binary or install 'tailwindcss'"
     exit 1
 fi
 "$TAILWIND_BIN" -c "$SCRIPT_DIR/tailwind.config.cjs" -i "$SCRIPT_DIR/src/css/input.css" -o "$SCRIPT_DIR/src/css/main.css" --minify
