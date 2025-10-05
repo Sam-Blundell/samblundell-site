@@ -3,10 +3,13 @@
 # Deployment script for Sam Blundell's website
 # Copies built files to the VPS web directory
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
 # Load .env if present (allows overriding defaults)
-if [ -f ".env" ]; then
+if [ -f "$REPO_ROOT/.env" ]; then
   set -a
-  . ".env"
+  . "$REPO_ROOT/.env"
   set +a
 fi
 
@@ -19,16 +22,14 @@ echo "Deploying to VPS ${VPS_USER}@${VPS_HOST}..."
 
 # Build the site first
 echo "Building site..."
-./build.sh
-
-if [ $? -ne 0 ]; then
+if ! "$REPO_ROOT/scripts/build.sh"; then
     echo "Build failed, aborting deployment"
     exit 1
 fi
 
 # Copy files to VPS
 echo "Copying files to VPS..."
-rsync -avz --delete src/ "${VPS_USER}@${VPS_HOST}:${WEB_ROOT}/" \
+rsync -avz --delete "$REPO_ROOT/src/" "${VPS_USER}@${VPS_HOST}:${WEB_ROOT}/" \
     --exclude="css/input.css" \
     --exclude="tailwindcss-linux-x64"
 
