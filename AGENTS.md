@@ -1,8 +1,8 @@
 # Agent Guide
 **Build & Deploy**
-- `./build.sh` compiles Tailwind `src/css/input.css` → `src/css/main.css`.
-- `./deploy.sh` runs the build then `rsync`s `src/` to VPS; update user/host/path.
-- Tailwind CLI `./tailwindcss-linux-x64` must exist; install via `README.md`.
+- Build: `./build.sh` compiles Tailwind `src/css/input.css` → `src/css/main.css`.
+- Deploy: `./deploy.sh` builds then rsyncs `src/` to VPS (configure user/host/path).
+- Tailwind CLI: download `./tailwindcss-linux-x64` (v3.4.17) locally; gitignored to keep the repo lean; README covers refresh steps and system fallback.
 **Lint & Test**
 - Optional linting: `npx htmlhint "src/**/*.html"` and `npx stylelint "src/**/*.css"`.
 - Tests absent; when added, run `npm test -- my.spec -t "name"` for single cases.

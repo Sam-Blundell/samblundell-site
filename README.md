@@ -23,18 +23,19 @@ src/
 
 ### Prerequisites
 
-- Bundled Tailwind CLI (`./tailwindcss-linux-x64`, v3.4.17) or a matching Tailwind v3 system binary
+- Tailwind CLI v3.4.17 placed at `./tailwindcss-linux-x64` (not committed to GitHub due to size) or a matching Tailwind v3 system binary
 - Tailwind v3 keeps the CSS payload small and supports older browsers without relying on CSS custom properties
 - SSH access to your VPS
 
 ### Setup
 
 1. Clone this repository
-2. Optional: if you need to refresh the bundled CLI, download Tailwind v3.4.17 and replace `./tailwindcss-linux-x64`:
+2. Download the Tailwind v3.4.17 standalone CLI (not checked in) and place it at `./tailwindcss-linux-x64`:
    ```bash
    curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.17/tailwindcss-linux-x64
    chmod +x tailwindcss-linux-x64
    ```
+   > If you already have Tailwind v3.4.x installed globally as `tailwindcss`, you can skip this step.
 
 ### Building
 
